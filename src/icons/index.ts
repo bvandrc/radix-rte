@@ -3,21 +3,9 @@
 
 /**
  * @fileoverview The `/icons` entry point: the table menu's badged icons, and
- * the builder that draws them for a host's own.
+ * the builder that draws them for a host's own. Everything both files export
+ * is public, so a new export from either ships with the next release.
  */
 
-export {
-  type BadgedIconOptions,
-  buildBadgedIcon,
-  LUCIDE_VIEWBOX_SIZE,
-} from './icon-builders'
-export {
-  CutColumnsIcon,
-  CutRowsIcon,
-  DeleteColumnsIcon,
-  DeleteRowsIcon,
-  PasteAboveIcon,
-  PasteBelowIcon,
-  PasteLeftIcon,
-  PasteRightIcon,
-} from './table-icons'
+export * from './icon-builders'
+export * from './table-icons'
