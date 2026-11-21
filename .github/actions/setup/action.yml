@@ -1,0 +1,40 @@
+name: Setup
+description: Install pnpm, Node, and the project's dependencies.
+
+inputs:
+  registry-url:
+    description: The npm registry to write an `.npmrc` for, when the job publishes.
+    required: false
+
+runs:
+  using: composite
+
+  steps:
+    # Before setup-node, whose pnpm cache asks pnpm where its store is. Takes
+    # the version from package.json's `packageManager`.
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v6
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v7
+      with:
+        node-version: '24'
+        cache: 'pnpm'
+        registry-url: ${{ inputs.registry-url }}
+
+    # `setup-node`'s cache only covers pnpm's store -- `pnpm install` still
+    # spends time linking it into node_modules on every job. Cache the installed
+    # tree itself so a hit skips the install outright. Exact match only, no
+    # restore-keys: a partial hit would leave the tree disagreeing with the
+    # lockfile.
+    - name: Cache node_modules
+      id: node-modules-cache
+      uses: actions/cache@v6
+      with:
+        path: node_modules
+        key: node-modules-${{ runner.os }}-${{ runner.arch }}-node24-${{ hashFiles('pnpm-lock.yaml') }}
+
+    - name: Install dependencies
+      if: steps.node-modules-cache.outputs.cache-hit != 'true'
+      run: pnpm install --frozen-lockfile
+      shell: bash

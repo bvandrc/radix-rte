@@ -1,5 +1,9 @@
 name: Sync Conventions
 
+# Pulls the shared conventions from bvandrc/bvandrc-conventions into
+# `conventions/` weekly, opening a PR when they've drifted, where Claude then
+# brings the code into line with them. That step needs the Claude GitHub App on
+# this repo, and a `CLAUDE_CODE_OAUTH_TOKEN` or `ANTHROPIC_API_KEY` secret.
 on:
   schedule:
     - cron: '0 9 * * 1' # Mondays, 09:00 UTC
@@ -12,6 +16,7 @@ permissions:
 
 jobs:
   sync:
+    name: Sync
     uses: bvandrc/bvandrc-conventions/.github/workflows/sync.yml@main
     with:
       files: all.md typescript.md react.md ts-testing-all.md ts-unit-testing.md npm-publishing.md biome.base.jsonc
