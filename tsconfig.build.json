@@ -1,0 +1,7 @@
+{
+  // What tsdown builds the types from: `tsconfig.json`, less the tests, whose
+  // helpers' inferred types reach into Vitest's and can't be emitted.
+  "extends": "./tsconfig.json",
+  "include": ["./src/**/*"],
+  "exclude": ["./src/**/__tests__/**"]
+}
