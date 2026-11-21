@@ -1,7 +1,8 @@
 /**
  * @fileoverview Helpers for the HTML string the editor reads and writes.
  * Exported so every reader of a stored value agrees on what counts as
- * editor-produced HTML versus a legacy plain-text one.
+ * editor-produced HTML versus a legacy plain-text one. `/utils` ships it for
+ * servers too, so it may reach nothing of React, Tiptap, or the editor.
  */
 
 import { escape as escapeHtml } from 'es-toolkit'

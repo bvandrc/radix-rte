@@ -3,8 +3,8 @@
 
 /**
  * @fileoverview The editor package's React-free helpers, safe to import
- * anywhere, a server included. Nothing under here may reach React, Tiptap, or
- * the editor itself.
+ * anywhere, a server included. Nothing this re-exports may reach React,
+ * Tiptap, or the editor itself.
  */
 
-export { isEditorHtml, isHtmlMarkup, toEditorContent } from './html'
+export { isEditorHtml, isHtmlMarkup, toEditorContent } from './lib/html'

@@ -20,7 +20,7 @@ import { PasteHtmlSource } from '../extensions/paste-html-source'
 import { TableCutPaste } from '../extensions/table-cut-paste'
 import { cn } from '../lib/cn'
 import { type RteFeaturesResolved, STARTER_KIT_FEATURES } from '../lib/features'
-import { toEditorContent } from '../utils'
+import { toEditorContent } from '../lib/html'
 
 /**
  * Whether the editor is empty.
