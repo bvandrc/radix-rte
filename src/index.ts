@@ -19,4 +19,6 @@ export {
 // Only its props type: `RichTextEditor` already renders this variant, and
 // imports both, so the component on its own would save a host nothing.
 export type { RteFullscreenAllowedProps } from './RteFullscreenAllowed'
+// For a host that never wants full screen: unlike `RichTextEditor`, it doesn't
+// import the full-screen variant, so that code is tree-shaken out.
 export { RteNoFullscreen, type RteNoFullscreenProps } from './RteNoFullscreen'
