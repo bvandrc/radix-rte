@@ -16,8 +16,7 @@ export {
   RichTextEditor,
   type RichTextEditorProps,
 } from './RichTextEditor'
-export {
-  RteFullscreenAllowed,
-  type RteFullscreenAllowedProps,
-} from './RteFullscreenAllowed'
+// Only its props type: `RichTextEditor` already renders this variant, and
+// imports both, so the component on its own would save a host nothing.
+export type { RteFullscreenAllowedProps } from './RteFullscreenAllowed'
 export { RteNoFullscreen, type RteNoFullscreenProps } from './RteNoFullscreen'

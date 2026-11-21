@@ -60,7 +60,6 @@ The dialog parts and `Button` aren't needed when `allowFullscreen` is `false`. T
 | Export | What it does |
 | --- | --- |
 | `RichTextEditor` | The editor, with full screen unless `allowFullscreen` is `false`. |
-| `RteFullscreenAllowed` | The editor with full screen, on its own. |
 | `RteNoFullscreen` | The editor without full screen, on its own, so none of the full-screen code reaches your bundle. |
 
 ### Features
