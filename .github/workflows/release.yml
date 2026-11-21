@@ -1,0 +1,52 @@
+name: Release
+
+# Publishing a GitHub release stages the package at the version its
+# `package.json` carries -- bump that first, then tag the release `v<version>`.
+# The staged version goes live once approved on npmjs.com with 2FA.
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  # Signs the npm provenance statement, and authenticates the staged publish
+  # through npm trusted publishing.
+  id-token: write
+
+# One release at a time; a second waits rather than cancelling one in flight.
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Stage on npm
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup
+        uses: ./.github/actions/setup
+        with:
+          registry-url: https://registry.npmjs.org
+
+      # A tag that disagrees with package.json would stage a version nobody
+      # released under that name.
+      - name: Check the tag matches package.json
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if [ "v$VERSION" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::The release tag ($GITHUB_REF_NAME) doesn't match package.json's version (v$VERSION)."
+            exit 1
+          fi
+
+      # Staged, not published: the version goes live only once it's approved
+      # on npmjs.com. `prepublishOnly` still runs the checks, the tests, and
+      # the build first. A release checks out its tag rather than a branch,
+      # which pnpm's git checks reject.
+      - name: Stage the publish
+        run: |
+          pnpm stage publish --no-git-checks --provenance
+          echo "Staged ${GITHUB_REF_NAME} on npm. Approve it on npmjs.com to publish it." >> "$GITHUB_STEP_SUMMARY"
