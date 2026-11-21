@@ -1,6 +1,6 @@
 /**
  * @fileoverview The table menu's badged icons, for the actions Lucide has none
- * of, and the builder that draws them.
+ * of.
  */
 
 import {
@@ -20,8 +20,6 @@ import {
   buildBadgedIcon,
   LUCIDE_VIEWBOX_SIZE,
 } from './icon-builders'
-
-export { type BadgedIconOptions, buildBadgedIcon, LUCIDE_VIEWBOX_SIZE }
 
 const CORNER_RED_X_BADGE_PROPS = {
   // `X` pads its glyph more than most, so it takes a smaller box to sit as
