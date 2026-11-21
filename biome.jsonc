@@ -1,0 +1,51 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": ["./conventions/biome.base.jsonc"],
+  "css": {
+    "parser": {
+      // The editor's stylesheet is Tailwind v4's: `@source`, `@theme`, and the rest.
+      "tailwindDirectives": true
+    }
+  },
+  "overrides": [
+    {
+      // A unit test is named for the module it covers (`conventions/ts-unit-testing.md`),
+      // so a component's test file carries that component's PascalCase name.
+      "includes": ["**/__tests__/**/*.tsx"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useFilenamingConvention": {
+              "level": "error",
+              "options": {
+                "filenameCases": ["camelCase", "kebab-case", "PascalCase"]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      // Tests declare the components they render inside the case or helper
+      // that uses them. Each is rendered once, so the identity the rule guards
+      // across renders never comes into it.
+      "includes": ["**/__tests__/**"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noComponentHookFactories": "off"
+          }
+        }
+      }
+    }
+  ],
+  "files": {
+    "includes": [
+      "**",
+      "!!conventions",
+      "!!**/dist",
+      "!!**/coverage",
+      "!**/node_modules"
+    ]
+  }
+}

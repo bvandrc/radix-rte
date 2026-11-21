@@ -1,0 +1,91 @@
+{
+  "name": "@bvandrc/radix-rich-text-editor",
+  "version": "0.0.0",
+  "description": "A Tiptap rich text editor for React, built on Radix and Tailwind. It has a formatting toolbar, checklists, tables, and an optional full-screen mode, all rendered with your own components and themed through your colors.",
+  "keywords": [
+    "react",
+    "rich-text-editor",
+    "wysiwyg",
+    "tiptap",
+    "radix",
+    "radix-ui",
+    "shadcn",
+    "tailwindcss",
+    "editor"
+  ],
+  "author": "Blake Vandercar",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bvandrc/radix-rte.git"
+  },
+  "homepage": "https://github.com/bvandrc/radix-rte#readme",
+  "bugs": "https://github.com/bvandrc/radix-rte/issues",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "__c0": "====================[ Build & Development ]======================",
+    "prepublishOnly": "pnpm run check && pnpm run test && pnpm run build",
+    "build": "tsdown",
+    "__c1": "====================[ Linting & Type Checking ]==================",
+    "check": "pnpm run ts:check && pnpm run lint",
+    "format": "biome check . --fix",
+    "lint": "biome check .",
+    "ts:check": "tsc",
+    "__c2": "====================[ Unit Testing ]=============================",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:isolated": "vitest run --isolate"
+  },
+  "peerDependencies": {
+    "radix-ui": "^1",
+    "react": "^19",
+    "react-dom": "^19",
+    "tailwindcss": "^4"
+  },
+  "peerDependenciesMeta": {
+    "radix-ui": {
+      "description": "The parts the editor renders with are typed against Radix's own."
+    },
+    "tailwindcss": {
+      "description": "`styles.css` is a Tailwind v4 stylesheet, imported into the app's own."
+    }
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.6",
+    "@testing-library/jest-dom": "^7",
+    "@testing-library/react": "^16",
+    "@testing-library/user-event": "^14",
+    "@types/node": "^24",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6",
+    "happy-dom": "^21",
+    "radix-ui": "^1",
+    "react": "^19",
+    "react-dom": "^19",
+    "tailwindcss": "^4",
+    "tsdown": "^0.23",
+    "typescript": "^7",
+    "vitest": "^5"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@12.21.0"
+}
