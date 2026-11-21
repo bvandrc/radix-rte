@@ -21,7 +21,7 @@ import {
   LUCIDE_VIEWBOX_SIZE,
 } from './icon-builders'
 
-export { buildBadgedIcon }
+export { type BadgedIconOptions, buildBadgedIcon, LUCIDE_VIEWBOX_SIZE }
 
 const CORNER_RED_X_BADGE_PROPS = {
   // `X` pads its glyph more than most, so it takes a smaller box to sit as

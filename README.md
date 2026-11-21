@@ -87,7 +87,7 @@ The editor's colors are its own Tailwind theme colors. Each is named for the sha
 | Entry point | What it has |
 | --- | --- |
 | `@bvandrc/radix-rich-text-editor/utils` | React-free helpers for the HTML the editor reads and writes, safe on a server: `isEditorHtml`, `isHtmlMarkup`, and `toEditorContent`, which turns a plain-text value from before you had rich text into HTML the editor reads. |
-| `@bvandrc/radix-rich-text-editor/icons` | The badged icons the table menu uses, like `CutRowsIcon`, and `buildBadgedIcon` for drawing more of them. |
+| `@bvandrc/radix-rich-text-editor/icons` | The badged icons the table menu uses, like `CutRowsIcon`, and `buildBadgedIcon` for drawing more of them, with its `BadgedIconOptions` type and `LUCIDE_VIEWBOX_SIZE`, the units its sizes are in. |
 | `@bvandrc/radix-rich-text-editor/test-support` | `SELECTORS`, the editor's `data-testid`s, for your own tests to reach its toolbar and menus. |
 
 ## License
