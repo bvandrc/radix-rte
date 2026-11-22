@@ -9,7 +9,7 @@ import { useTouchKeepsFocus } from '@bvandrc/react-toolkit'
 import { useEditorState } from '@tiptap/react'
 import { ListTodo, Trash2 } from 'lucide-react'
 
-import { ChecklistWithAutoDelete } from '../extensions/checklist-auto-delete'
+import { ChecklistWithAutoDelete } from '@/extensions/checklist-auto-delete'
 import {
   ACTIVE_BUTTON_CLASSES,
   ToolbarButton,

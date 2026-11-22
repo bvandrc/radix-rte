@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { pickBy } from 'es-toolkit'
 
-import { type RteFeaturesArg, resolveFeatures } from '../lib/features'
+import { type RteFeaturesArg, resolveFeatures } from '@/lib/features'
 
 /**
  * The features the editor was created with, resolved once at mount.

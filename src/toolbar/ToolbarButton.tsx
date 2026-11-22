@@ -5,8 +5,8 @@
 
 import type { Editor } from '@tiptap/react'
 
-import { cn } from '../lib/cn'
-import type { RteMenuComponents } from '../lib/components'
+import { cn } from '@/lib/cn'
+import type { RteMenuComponents } from '@/lib/components'
 
 /** Applied when a button's formatting is active at the cursor. */
 export const ACTIVE_BUTTON_CLASSES =

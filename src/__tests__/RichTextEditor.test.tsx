@@ -2,9 +2,9 @@ import { act, render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { delay } from 'es-toolkit'
 
-import type { RteFeature } from '../lib/features'
+import type { RteFeature } from '@/lib/features'
+import { SELECTORS } from '@/test-support/selectors'
 import { RichTextEditor } from '../RichTextEditor'
-import { SELECTORS } from '../test-support/selectors'
 import { ALL_COMPONENTS, BASE_COMPONENTS, renderEditor } from './__helpers__'
 
 const {

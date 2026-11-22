@@ -16,8 +16,8 @@ import {
 } from 'lucide-react'
 import type { MultidimensionalReadonlyArray } from 'type-fest'
 
-import { MARK, NODE } from '../lib/constants'
-import type { RteFeature, RteFeaturesResolved } from '../lib/features'
+import { MARK, NODE } from '@/lib/constants'
+import type { RteFeature, RteFeaturesResolved } from '@/lib/features'
 import { ChecklistMenu } from './ChecklistMenu'
 import { TableMenu } from './TableMenu'
 import {

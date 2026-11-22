@@ -2,8 +2,8 @@ import { act, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { findChildren, type TiptapEditorHTMLElement } from '@tiptap/core'
 
-import { mockDialogEscape } from '../test-support/dialog-escape'
-import { SELECTORS } from '../test-support/selectors'
+import { mockDialogEscape } from '@/test-support/dialog-escape'
+import { SELECTORS } from '@/test-support/selectors'
 import { renderEditor } from './__helpers__'
 
 const { TABLE } = SELECTORS

@@ -6,8 +6,8 @@
 import { type Editor, Extension } from '@tiptap/core'
 import { Plugin, PluginKey } from '@tiptap/pm/state'
 
-import { NODE } from '../lib/constants'
-import { isHtmlMarkup } from '../lib/html'
+import { NODE } from '@/lib/constants'
+import { isHtmlMarkup } from '@/lib/html'
 
 const PLUGIN_NAME = 'pasteHtmlSource'
 

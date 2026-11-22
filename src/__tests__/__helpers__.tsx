@@ -9,9 +9,9 @@ import type { DistributedOmit } from 'type-fest'
 import type {
   RteBaseComponents,
   RteFullscreenComponents,
-} from '../lib/components'
-import { RichTextEditor } from '../RichTextEditor'
-import type { RteFullscreenAllowedProps } from '../RteFullscreenAllowed'
+} from '@/lib/components'
+import { RichTextEditor } from '@/RichTextEditor'
+import type { RteFullscreenAllowedProps } from '@/RteFullscreenAllowed'
 
 /** The editor's props, less the parts `renderEditor` fills in. */
 type EditorProps = DistributedOmit<RteFullscreenAllowedProps, 'components'>

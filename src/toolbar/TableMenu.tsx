@@ -30,7 +30,7 @@ import {
   getPendingTableCut,
   type TableAxis,
   type TablePasteSide,
-} from '../extensions/table-cut-paste'
+} from '@/extensions/table-cut-paste'
 import {
   CutColumnsIcon,
   CutRowsIcon,
@@ -40,8 +40,8 @@ import {
   PasteBelowIcon,
   PasteLeftIcon,
   PasteRightIcon,
-} from '../icons'
-import { cn } from '../lib/cn'
+} from '@/icons'
+import { cn } from '@/lib/cn'
 import {
   ACTIVE_BUTTON_CLASSES,
   ToolbarButton,

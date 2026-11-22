@@ -4,7 +4,7 @@ import {
 } from '@bvandrc/react-toolkit/test-support'
 import { screen, waitFor } from '@testing-library/react'
 
-import { SELECTORS } from '../test-support/selectors'
+import { SELECTORS } from '@/test-support/selectors'
 import { renderEditor } from './__helpers__'
 
 const { FULLSCREEN_DIALOG } = SELECTORS
