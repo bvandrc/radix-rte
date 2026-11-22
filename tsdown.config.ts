@@ -4,7 +4,7 @@ export default defineConfig({
   entry: [
     'src/index.ts',
     'src/icons/index.ts',
-    'src/utils.ts',
+    'src/utils-index.ts',
     'src/test-support/selectors.ts',
   ],
   format: 'esm',

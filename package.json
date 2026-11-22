@@ -37,8 +37,8 @@
       "default": "./dist/test-support/selectors.mjs"
     },
     "./utils": {
-      "types": "./dist/utils.d.mts",
-      "default": "./dist/utils.mjs"
+      "types": "./dist/utils-index.d.mts",
+      "default": "./dist/utils-index.mjs"
     }
   },
   "files": [
