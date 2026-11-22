@@ -5,6 +5,7 @@
 import { render } from '@testing-library/react'
 import { Dialog, DropdownMenu } from 'radix-ui'
 import type { DistributedOmit } from 'type-fest'
+import type { Mock } from 'vitest'
 
 import type {
   RteBaseComponents,
@@ -69,8 +70,12 @@ export const ALL_COMPONENTS = { ...BASE_COMPONENTS, ...FULLSCREEN_COMPONENTS }
 export const renderEditor = (
   props: Partial<EditorProps> = {},
   { before, after }: { before?: React.ReactNode; after?: React.ReactNode } = {}
-) => {
-  const onChange = vi.fn()
+): {
+  editor: HTMLElement
+  onChange: Mock<EditorProps['onChange']>
+  rerenderEditor: (nextProps: Partial<EditorProps>) => void
+} => {
+  const onChange = vi.fn<EditorProps['onChange']>()
   const buildTree = (treeProps: Partial<EditorProps>) => (
     <>
       {before}

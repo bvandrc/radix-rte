@@ -63,8 +63,8 @@ const renderTableAt = async (
 
 /** Selects the block of cells from the one reading `from` to the one reading `to`. */
 const selectCells = (editorElement: HTMLElement, from: string, to: string) => {
-  // Through TipTap's own editor rather than the pointer: happy-dom gives a
-  // drag or Shift+Arrow no layout to select cells across.
+  // Through Tiptap's own editor rather than a pointer drag, so which cells a
+  // case selects doesn't hang on the table's layout at the test's viewport.
   const { editor } = editorElement as TiptapEditorHTMLElement
   if (!editor) throw new Error('no TipTap editor on this element')
   const findCellPos = (text: string) =>

@@ -238,7 +238,8 @@ describe('RichTextEditor', () => {
       await user.keyboard(TEXT.FIRST)
       rerenderEditor({ value: '<p>Reset</p>' })
 
-      expect(editor).toHaveTextContent(/^Reset$/)
+      // Exactly the reset value, with none of the pending typing left in it.
+      expect(editor.textContent).toBe('Reset')
     })
   })
 

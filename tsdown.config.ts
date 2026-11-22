@@ -12,7 +12,6 @@ export default defineConfig({
   // through one file.
   unbundle: true,
   dts: true,
-  tsconfig: './tsconfig.build.json',
   clean: true,
   // Shipped beside the modules, where its `@source "./"` points Tailwind at
   // the class names they carry.
