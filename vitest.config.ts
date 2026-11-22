@@ -30,8 +30,5 @@ export default defineConfig({
     // `--sequence.seed=<n>` replays.
     sequence: { shuffle: { files: true } },
     setupFiles: ['./vitest.setup.ts'],
-    // Until the editor and its tests move in from TaskRankr, there are none to
-    // run. Comes out with them, so a mistyped `include` can't pass silently.
-    passWithNoTests: true,
   },
 })

@@ -1,6 +1,6 @@
 {
   "name": "@bvandrc/radix-rich-text-editor",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A Tiptap rich text editor for React, built on Radix and Tailwind. It has a formatting toolbar, checklists, tables, and an optional full-screen mode, all rendered with your own components and themed through your colors.",
   "keywords": [
     "react",
@@ -13,19 +13,32 @@
     "tailwindcss",
     "editor"
   ],
-  "author": "Blake Vandercar",
-  "license": "MIT",
+  "homepage": "https://github.com/bvandrc/radix-rte#readme",
+  "bugs": "https://github.com/bvandrc/radix-rte/issues",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bvandrc/radix-rte.git"
   },
-  "homepage": "https://github.com/bvandrc/radix-rte#readme",
-  "bugs": "https://github.com/bvandrc/radix-rte/issues",
+  "author": "Blake Vandercar",
+  "license": "MIT",
   "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.mts",
       "default": "./dist/index.mjs"
+    },
+    "./icons": {
+      "types": "./dist/icons/index.d.mts",
+      "default": "./dist/icons/index.mjs"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./test-support": {
+      "types": "./dist/test-support/selectors.d.mts",
+      "default": "./dist/test-support/selectors.mjs"
+    },
+    "./utils": {
+      "types": "./dist/utils-index.d.mts",
+      "default": "./dist/utils-index.mjs"
     }
   },
   "files": [
@@ -34,6 +47,10 @@
   "sideEffects": [
     "*.css"
   ],
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@12.21.0",
   "publishConfig": {
     "access": "public",
     "provenance": true
@@ -51,6 +68,22 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:isolated": "vitest run --isolate"
+  },
+  "dependencies": {
+    "@bvandrc/react-toolkit": "^2.7",
+    "@tiptap/core": "^3",
+    "@tiptap/extension-list": "^3",
+    "@tiptap/extension-table": "^3",
+    "@tiptap/extensions": "^3",
+    "@tiptap/pm": "^3",
+    "@tiptap/react": "^3",
+    "@tiptap/starter-kit": "^3",
+    "clsx": "^2",
+    "es-toolkit": "^1",
+    "lucide-react": "^1",
+    "tailwind-merge": "^3",
+    "type-fest": "^5",
+    "usehooks-ts": "^3"
   },
   "peerDependencies": {
     "radix-ui": "^1",
@@ -83,9 +116,5 @@
     "tsdown": "^0.23",
     "typescript": "^7",
     "vitest": "^5"
-  },
-  "engines": {
-    "node": ">=20"
-  },
-  "packageManager": "pnpm@12.21.0"
+  }
 }

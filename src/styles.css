@@ -1,0 +1,132 @@
+/*
+ * @bvandrc/radix-rich-text-editor's styles. Import it into the app's Tailwind
+ * v4 stylesheet, after Tailwind itself:
+ *
+ *   @import "tailwindcss";
+ *   @import "@bvandrc/radix-rich-text-editor/styles.css";
+ *
+ * The editor's colors are its own `--color-radix-rte-*` theme colors below,
+ * each named for, and defaulting to, the shadcn color of its role, so an app
+ * with a shadcn theme needs to set nothing. Set any of them, in the app's own
+ * `@theme` or on `:root`, to color the editor differently. Its content styles
+ * below apply inside the element marked `data-slot="radix-rte-content"`.
+ */
+
+/* Tailwind only generates the classes it finds, and wouldn't otherwise look
+   in a package. */
+@source "./";
+
+/* Not `inline`, so these land on `:root` as variables an app can override
+   with plain CSS too. */
+@theme {
+  --color-radix-rte-foreground: var(--color-foreground);
+  --color-radix-rte-muted-foreground: var(--color-muted-foreground);
+  --color-radix-rte-primary: var(--color-primary);
+  --color-radix-rte-secondary: var(--color-secondary);
+  --color-radix-rte-border: var(--color-border);
+  /* The toolbar's separators and borders, and the full-screen header's. */
+  --color-radix-rte-divider: var(--color-border);
+  --color-radix-rte-destructive: var(--color-destructive);
+}
+
+[data-slot="radix-rte-content"] {
+  /* Placeholder text */
+  & p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    color: var(--color-radix-rte-muted-foreground);
+    float: left;
+    height: 0;
+    pointer-events: none;
+  }
+
+  /* Checklists (TaskList/TaskItem) */
+  & ul[data-type="taskList"] {
+    list-style: none;
+    padding-left: 0;
+
+    & li {
+      display: flex;
+      gap: 0.5rem;
+
+      & > label {
+        flex-shrink: 0;
+        padding-top: 0.1875rem;
+
+        & input:not(:disabled) {
+          cursor: pointer;
+        }
+      }
+
+      & > div {
+        flex: 1;
+      }
+
+      &[data-checked="true"] > div {
+        text-decoration: line-through;
+        color: var(--color-radix-rte-muted-foreground);
+      }
+    }
+  }
+
+  /* Tables (TableKit) */
+  & .tableWrapper {
+    overflow-x: auto;
+    margin: 0.5rem 0;
+  }
+
+  & table {
+    width: 100%;
+    margin: 0;
+    table-layout: fixed;
+    border-collapse: collapse;
+
+    & th,
+    & td {
+      position: relative;
+      min-width: 3rem;
+      padding: 0.25rem 0.5rem;
+      border: 1px solid var(--color-radix-rte-border);
+      vertical-align: top;
+    }
+
+    & th {
+      background-color: var(--color-radix-rte-secondary);
+      font-weight: 600;
+      text-align: left;
+    }
+
+    & p {
+      margin: 0;
+    }
+
+    /* Highlight cells covered by a multi-cell selection. */
+    & .selectedCell::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--color-radix-rte-primary);
+      opacity: 0.2;
+      pointer-events: none;
+    }
+
+    /* Outline a row or column that's been cut, until it's pasted. */
+    & .cutCell {
+      outline: 2px dashed var(--color-radix-rte-primary);
+      outline-offset: -2px;
+    }
+
+    & .column-resize-handle {
+      position: absolute;
+      top: 0;
+      bottom: -1px;
+      right: -2px;
+      width: 4px;
+      background-color: var(--color-radix-rte-primary);
+      pointer-events: none;
+    }
+  }
+
+  &.resize-cursor {
+    cursor: col-resize;
+  }
+}
