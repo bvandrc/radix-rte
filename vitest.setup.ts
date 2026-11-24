@@ -8,11 +8,9 @@ import '@testing-library/jest-dom/vitest'
 
 import { cleanup } from '@testing-library/react'
 
-// Test files share a worker's modules and its document, so whatever one test
-// leaves behind reaches every case after it, in this file or the next.
+// Each test file gets a page of its own, but its cases share it, so whatever
+// one case leaves behind reaches every case after it in the file.
 afterEach(() => {
-  // Testing Library registers its own unmount when first imported, which a
-  // shared module graph does only for the first file a worker runs.
   cleanup()
   // Radix portals mount on `body`, and a dialog's scroll lock is left on it.
   document.body.innerHTML = ''

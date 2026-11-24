@@ -24,7 +24,6 @@ Follow all of these. `.github/workflows/sync-conventions.yml` syncs them from ht
 | `pnpm run lint` | Biome lint and format check |
 | `pnpm run ts:check` | TypeScript check |
 | `pnpm run test` | Vitest unit tests (single run) |
-| `pnpm run test:isolated` | Vitest with each file in its own module graph, to see whether a failure depends on another file |
 | `pnpm run check` | `ts:check` + `lint`; `prepublishOnly` runs it, then `test` and `build` |
 
 ## Gotchas
@@ -43,9 +42,10 @@ Follow all of these. `.github/workflows/sync-conventions.yml` syncs them from ht
 - **`@/*` is `src/*`**:
   - Use it for any import that would climb out of a folder (`../`); keep same-folder siblings relative.
   - Declared once in `tsconfig.json`. Vitest reads it through `resolve.tsconfigPaths`, and tsdown rewrites it to relative paths in `dist/`, so consumers never see it.
-- **Unit tests share a worker**: `isolate` is off, and files run in a shuffled order.
-  - `vitest.setup.ts` clears the DOM, `localStorage`, and fake timers after every case, and `vitest.config.ts` restores spies and stubbed globals before each.
+- **Unit tests run in real Chromium**: Vitest's browser mode, through Playwright, not happy-dom or jsdom. An editor is selections and typing, which those only approximate: ProseMirror 1.43 broke the table and full-screen tests under happy-dom while Chromium passed them.
+  - Install the browser once with `pnpm exec playwright install chromium`. CI installs it in each job that runs the tests, the release job included, since `prepublishOnly` runs them.
+  - Each test file gets a page of its own, but its cases share it. `vitest.setup.ts` clears the DOM, `localStorage`, and fake timers after every case, and `vitest.config.ts` restores spies and stubbed globals before each.
   - A module's own state is the test's to undo.
   - A spy made once for a whole `describe` is restored before its first case, so make it in each case or a `beforeEach`.
-  - Replay a seed-dependent failure with `--sequence.seed=<n>`.
+  - The page is Vitest's default viewport, 414px wide, which is below Tailwind's `md`. A case about mobile or desktop sets it with `mockMobile` from `@bvandrc/react-toolkit/test-support` rather than relying on the width.
 - **pnpm, pinned**: `packageManager` in `package.json` pins the version, which `corepack enable` (or CI's `pnpm/action-setup`) picks up. Install with `pnpm install`; npm and `package-lock.json` aren't used.

@@ -63,6 +63,11 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
+      # The tests run in real Chromium (Vitest's browser mode), which
+      # Playwright installs here along with the system libraries it needs.
+      - name: Install Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
       - name: Run unit tests
         run: pnpm run test
 

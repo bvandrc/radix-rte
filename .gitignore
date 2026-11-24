@@ -3,3 +3,5 @@ coverage
 dist
 .DS_Store
 *.tgz
+# Screenshots Vitest takes when a browser-mode test fails.
+.vitest

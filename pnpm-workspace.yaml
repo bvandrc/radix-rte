@@ -1,9 +1,2 @@
 minimumReleaseAgeExclude:
   - '@bvandrc/react-toolkit@2.10.0'
-overrides:
-  # 1.43 tracks the page's selection through `selectionchange`, which happy-dom
-  # fires synchronously where browsers queue it, and the editor's unit tests
-  # lose cell selections and typing under it that real Chromium keeps. Held
-  # until those tests run in a real browser. Only this repo's own installs see
-  # it: a consumer gets whatever `@tiptap/pm` resolves.
-  prosemirror-view: ~1.42

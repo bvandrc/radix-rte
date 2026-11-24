@@ -66,8 +66,7 @@
     "ts:check": "tsc",
     "__c2": "====================[ Unit Testing ]=============================",
     "test": "vitest run",
-    "test:watch": "vitest",
-    "test:isolated": "vitest run --isolate"
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@bvandrc/react-toolkit": "^2.7",
@@ -108,7 +107,8 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^6",
-    "happy-dom": "^21",
+    "@vitest/browser-playwright": "^5",
+    "playwright": "^1",
     "radix-ui": "^1",
     "react": "^19",
     "react-dom": "^19",

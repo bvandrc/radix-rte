@@ -18,9 +18,6 @@ afterEach(() => {
 
 it('pins the portalled fullscreen dialog to the visual viewport on mobile', async () => {
   mockMobile(true)
-  vi.spyOn(window, 'scrollTo').mockImplementation(() => {
-    // happy-dom does not implement native scrolling.
-  })
   mockVisualViewport({ offsetTop: 48, height: 800 })
 
   renderEditor({
@@ -30,8 +27,10 @@ it('pins the portalled fullscreen dialog to the visual viewport on mobile', asyn
   })
 
   const dialog = await screen.findByTestId(FULLSCREEN_DIALOG)
+  // The pin's own inline style, since the computed `transform` reads back as a
+  // matrix rather than as the `translateY` that set it.
   await waitFor(() =>
-    expect(dialog).toHaveStyle({
+    expect(dialog.style).toMatchObject({
       transform: 'translateY(48px)',
       height: '800px',
     })
@@ -40,9 +39,6 @@ it('pins the portalled fullscreen dialog to the visual viewport on mobile', asyn
 
 it('leaves the fullscreen dialog unpinned on desktop', async () => {
   mockMobile(false)
-  vi.spyOn(window, 'scrollTo').mockImplementation(() => {
-    // happy-dom does not implement native scrolling.
-  })
   mockVisualViewport({ offsetTop: 48, height: 800 })
 
   renderEditor({
